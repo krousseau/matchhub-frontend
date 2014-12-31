@@ -1,0 +1,14 @@
+<section class="row">
+	<span class="player-name col-md-10">
+		<span ng-if="player.name.length > 0">
+			{{:: player.email}}
+		</span>
+		<span ng-if="player.name.length === 0">
+			{{:: player.email}}
+		</span>
+	</span>
+
+	<section class="actions col-md-2">
+		<a class="edit" ng-click="displayEdit(player)">Edit</a>
+	</section>
+</section>

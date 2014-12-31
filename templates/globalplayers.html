@@ -1,0 +1,24 @@
+<div class="container">
+	<h2>Global Players</h2>
+
+	<div id="search-sort-info" class="row" data-spy="affix" data-offset-top="250">
+		<div id="paging" ng-show="!(disablePrevPage && disableNextPage)" class="col-md-3">
+			<span class="btn-container">
+				<button type="button" ng-click="prevPage()" ng-disabled="disablePrevPage" class="btn btn-primary">&lt; Prev</button>
+				<button type="button" ng-click="nextPage()" ng-disabled="disableNextPage" class="btn btn-primary">Next &gt;</button>
+			</span>
+		</div>
+		<div id="search-box" class="col-md-4 input-group pull-right">
+			<input type="text" ng-model="search" ng-model-options="{debounce: 500}" placeholder="Search Players" class="form-control"/>
+			<div class="input-group-addon">
+			<button type="button" class="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+		</div>
+		</div>
+	</div>
+	<div id="active-filters">
+		<a class="open-filter" ng-click="activatePlayerFilter()">+ FILTER PLAYERS</a>
+	</div>
+	<mh-filter-box are-filters-active="areFiltersActive" apply="applyFilters()"></mh-filter-box>
+
+	<mh-display-teams teams="teams"></mh-display-teams>
+</div>

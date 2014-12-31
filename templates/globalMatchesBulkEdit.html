@@ -1,0 +1,36 @@
+<div class="modal-header">
+	<h3 class="modal-title">Bulk Edit Matches</h3>
+</div>
+<div class="modal-body">
+	<h4>Match Details</h4>
+
+	<section>
+		<label for="postpone">Postpone Matches</label>
+		<input id="postpone" type="checkbox" ng-model="editMatchesVm.postpone" />
+	</section>
+	<section>
+		<label for="venue">Venue</label>
+		<select id="venue" ng-model="editMatchesVm.matchVenue" ng-options="venue.venueName for venue in venues"></select>
+	</section>
+	<section>
+		<h4>Officials</h4>
+		<ul>
+			<li>
+				<label for="head-official">Head Official</label>
+				<input type="text" name="head-official" ng-model="editMatchesVm.official0" typeahead="official.email for official in officials | filter:$viewValue | limitTo:8" typeahead-min-length="2" typeahead-editable="true"  autocomplete="off"/>
+			</li>
+			<li>
+				<label for="official1">Linesman</label>
+				<input type="text" name="official1" ng-model="editMatchVm.official1" typeahead="official.email for official in officials | filter:$viewValue | limitTo:8" typeahead-editable="true" typeahead-min-length="2" autocomplete="off"/>
+			</li>
+			<li>
+				<label for="official2">Linesman</label>
+				<input type="text" name="official2" ng-model="editMatchVm.official2" typeahead="official.email for official in officials | filter:$viewValue | limitTo:8" typeahead-editable="true" typeahead-min-length="2" autocomplete="off"/>
+			</li>
+		</ul>
+	</section>
+</div> 
+<div class="modal-footer">
+	<button class="btn btn-primary" ng-click="editMatchesVm.save()">Save</button>
+	<button class="btn btn-warning" ng-click="editMatchesVm.cancel()">Cancel</button>
+</div>

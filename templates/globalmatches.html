@@ -1,0 +1,36 @@
+<div class="container">
+	<h2>Global Matches</h2>
+
+	<div id="search-sort-info" class="row" data-spy="affix" data-offset-top="250">
+		<div class="sort-box col-md-5">
+			<label for="sort">SORT BY</label>
+			<select id="sort">
+				<option value="date">Date</option>
+				<option value="league">League</option>
+			</select>
+		</div>
+		<div id="paging" ng-show="!(disablePrevPage && disableNextPage)" class="col-md-3">
+			<span class="btn-container pull-right">
+				<button type="button" ng-click="prevPage()" ng-disabled="disablePrevPage" class="btn btn-primary">&lt; Prev</button>
+				<button type="button" ng-click="nextPage()" ng-disabled="disableNextPage" class="btn btn-primary">Next &gt;</button>
+			</span>
+		</div>
+		<div id="search-box" class="col-md-4 input-group">
+			<input type="text" ng-model="search" ng-model-options="{debounce: 500}" placeholder="Search Matches" class="form-control"/>
+			<div class="input-group-addon">
+			<button type="button" class="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+		</div>
+		</div>
+	</div>
+	<div id="active-filters">
+			<input type="checkbox" id="select-all" ng-click="selectAllMatches()" ng-checked="allMatchesSelected()" />
+			<label for="select-all">SELECT ALL</label>
+		<button class="btn btn-primary" ng-click="displayBulkEdit()" ng-disabled="!canBulkEdit()" >Bulk Edit {{matchVm.numMatchesSelected()}} Matches</button>
+		<a class="open-filter pull-right" ng-click="activateMatchFilter()">
+			<i class="glyphicon glyphicon-filter"></i> FILTER MATCHES
+		</a>
+	</div>
+	<mh-filter-box are-filters-active="areFiltersActive" apply="applyFilters()"></mh-filter-box>
+
+	<mh-display-matches matches="matches"></mh-display-matches>
+</div>

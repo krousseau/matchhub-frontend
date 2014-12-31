@@ -1,0 +1,99 @@
+@import "../assets/bootstrap-sass-official/assets/stylesheets/_bootstrap";
+$filterBg: #eee;
+$altRowColor: #eee;
+$borderColor: #ccc;
+$secondaryTextColor: #a1a1a1;
+
+#search-sort-info {
+	background-color:$filterBg;
+
+	&.affix{
+	    top: 0; /* Set the top position of pinned element */
+	    left:$line-height-base;
+	}
+
+	#paging{	
+		padding:$line-height-base 0;
+	}
+}
+
+.header{
+	width:100%;
+	height:200px;
+	background:blue;
+	color:white;
+}
+
+.match-time{
+	font-size:2em;
+}
+
+.league-matches{
+	.match{
+		padding:10px 0;
+
+		&:nth-child(odd){
+			background:$altRowColor;
+		}
+
+		&.postponed .time-col {
+			@extend .text-danger;
+		}
+
+		.match-header{
+			border-bottom:1px solid $borderColor;
+
+			.team{
+				font-size:1.3em;
+				font-weight:bold;
+			}
+		}
+
+		.match-info{
+			font-size:1.1em;
+
+			.description{
+				font-size:.8em;
+				color: $secondaryTextColor;
+			}
+		}
+
+		.actions{
+
+			a{
+				border-right:2px solid $borderColor;
+				padding:0 $padding-base-vertical;
+
+				&:last-child{
+					border-left:2px solid $borderColor;
+				}
+			}
+		}
+	}
+}
+
+/* filter box animations */
+#filter-box{
+	position:fixed;
+	right:0;
+	top:0;
+	z-index: 1000; /* to keep the filter on top of search box */
+	height:100%;
+	scroll:auto;
+	background:$filterBg;
+	border-left:3px solid $borderColor;
+	width:500px;
+
+	#filter-container{
+		width:500px;
+	}
+
+	&.ng-hide-add, &.ng-hide-remove{
+		-webkit-transition:0.5s linear all;
+		transition:0.5s linear all;
+	}
+
+	&.ng-hide {
+		width:0;
+	}
+}

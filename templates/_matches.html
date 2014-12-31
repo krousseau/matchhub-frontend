@@ -1,0 +1,50 @@
+<section ng-repeat="(date, leagueMatches) in groupedMatches">
+	<h2 class="match-date text-center text-uppercase">{{:: date | date:'EEEE/MMMM d, y'}}</h2>
+	<section ng-repeat="(league, matches) in leagueMatches" class="league-matches">
+		<h3 class="league-name">{{:: league}}</h3>
+		<section ng-repeat="match in matches" class="row match {{:: match.status}}">
+			<span class="col-md-2 time-col">
+				<input type="checkbox" class="select-match" ng-model="match.isSelected" />
+				<span class="match-time">{{:: match.formattedTime}}</span>
+
+				<strong ng-if="isPostponed(match)" class="text-uppercase text-danger">Postponed</strong> 
+				<strong ng-if="!isPostponed(match)" class="text-uppercase">Upcoming</strong> 
+			</span>
+			<div class="col-md-10">
+				<div class="match-header row">
+					<span class="teams col-md-9">
+						<span class="team">{{:: match.awayName}}</span> vs <span class="team">{{:: match.homeName}}</span>
+					</span>
+
+					<section class="actions col-md-3">
+						<a href="" class="edit pull-right" ng-click="matchVm.displayEdit(match)">
+							<span class="glyphicon glyphicon-pencil"></span>&nbsp;Edit Match
+						</a>
+						<a href="" class="postpone pull-right" ng-click="matchVm.postpone(match)" ng-if="!isPostponed(match)">
+							<span class="glyphicon glyphicon-time"></span>&nbsp;Postpone
+						</a>
+					</section>
+				</div>
+				<div class="match-info row">
+					<div class="venue-box col-md-4">
+						<div class="venue">{{:: match.venueName}}</div>
+						<div class="venue-label description text-uppercase">Venue</div>
+					</div>
+					<div class="season-box col-md-4">
+						<div class="season">{{:: match.seasonName}}</div>
+						<div class="season-label description text-uppercase">Season</div>
+					</div>
+					<div class="officials-box col-md-4">
+						<div class="officials">
+							{{:: match.officialsDisplay}}
+							<em ng-if="match.officials.length === 0" class="no-officials-assigned text-muted">
+								None Assigned
+							</em>
+						</div>
+						<div class="officials-label description text-uppercase">Officials</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</section>
+</section>

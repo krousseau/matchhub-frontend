@@ -1,0 +1,11 @@
+{
+    "globals": {
+        "angular": true,
+        "window": true,
+        "console": true,
+        "$": true
+    },
+    "rules": {
+        "quotes": [2, "single"]
+    }
+}

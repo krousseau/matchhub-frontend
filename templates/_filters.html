@@ -1,0 +1,39 @@
+<section ng-show="areFiltersActive" id="filter-box">
+	<div id="filter-container">
+		<section id="close-filter-container">
+			<a class="close-filter" ng-click="cancelFilter()">X Close Filter</a>
+		</section>
+		<h4>Filter Matches By Status</h4>
+		<ul>
+			<li>
+				<input type="checkbox" ng-model="showPostponed" id="statuses.showPostponed"/>
+				<label for="showPostponed">Postponed</label>
+			</li>
+			<li>
+				<input type="checkbox" ng-model="showUpcoming" id="statuses.showUpcoming"/>
+				<label for="showUpcoming">Upcoming</label>
+			</li>
+			<li>
+				<input type="checkbox" ng-model="showCompleted" id="statuses.showCompleted"/>
+				<label for="showCompleted">Completed</label>
+			</li>
+		</ul>
+		<h4>Filter Matches By Active Season</h4>
+		<ul>
+			<li ng-repeat="league in leagues">
+				<input type="checkbox" ng-model="league.isSelected" id="league_{{:: league.id}}"/>
+				<label for="league_{{:: league.id}}">{{:: league.name}}</label>
+
+				<h5>Seasons</h5>
+				<ul>
+					<li ng-repeat="season in league.seasons">
+						<input type="checkbox" ng-model="season.isSelected" id="season_{{:: season.id}}"/>
+						<label for="season_{{:: season.id}}">{{:: season.name}}</label>
+					</li>
+				</ul>
+			</li>
+		</ul>
+
+		<button class="btn btn-primary btn-block" ng-click="applyFilters()">Apply</button>
+	</div>
+</section>

@@ -1,0 +1,6 @@
+<section ng-repeat="team in teams | orderBy: teamName">
+	<h2 class="team-name text-right">{{:: team.teamName}}</h2>
+	<section ng-repeat="player in team.players">
+		<mh-player-card player="player"/>
+	</section>
+</section>

@@ -1,0 +1,55 @@
+<div class="modal-header">
+	<h3 class="modal-title">Edit Match</h3>
+</div>
+<div class="modal-body">
+	<div id="teams-display">
+		<div class="home-team">
+			<span class="team-label">Home Team</span>
+			<span class="team-name">{{:: editMatchVm.match.homeName}}</soan>
+		</div>
+		<div class="away-team">
+			<span class="team-label">Away Team</span>
+			<span class="team-name">{{:: editMatchVm.match.awayName}}</soan>
+		</div>
+	</div>
+	<h4>Match Details</h4>
+	<form role="form">
+		<div class="form-group">
+			<label for="match-date">Date</label>
+			<p class="input-group">
+				<input id="match-date" type="text" class="form-control" datepicker-popup="yyyy-MM-dd" ng-model="editMatchVm.match.day" is-open="datepickerState.isOpen" min-date="today" ng-required="true" close-text="Close" />
+				<span class="input-group-btn">
+					<button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+				</span>
+			</p>
+		</div>
+		<div class="form-group">
+			<label for="match-time">Time</label>
+			<timepicker id="match-time" ng-model="editMatchVm.match.time" hour-step="1" minute-step="5"></timepicker>
+		</div>
+		<div class="form-group">
+			<label for="venue">Venue</label>
+			<select id="venue" class="form-control" ng-model="matchVenue" ng-options="venue.venueName for venue in venues">
+			</select>
+		</div>
+		<section>
+			<h4>Officials</h4>
+			<div class="form-group">
+				<label for="head-official">Head Official</label>
+				<input id="head-official" type="text" name="headofficial" class="form-control" ng-model="editMatchVm.match.official0" typeahead="official.email for official in officials | filter:$viewValue | limitTo:8" typeahead-editable="true" typeahead-min-length="2" autocomplete="off"/>
+			</div>
+			<div class="form-group">
+				<label for="official1">Linesman</label>
+				<input id="official1" type="text" name="official1" class="form-control" ng-model="editMatchVm.match.official1" typeahead="official.email for official in officials | filter:$viewValue | limitTo:8" typeahead-editable="true" typeahead-min-length="2" autocomplete="off"/>
+			</div>
+			<div class="form-group">
+				<label for="official2">Linesman</label>
+				<input id="official2" type="text" name="official2" class="form-control" ng-model="editMatchVm.match.official2" typeahead="official.email for official in officials | filter:$viewValue | limitTo:8" ypeahead-editable="true" typeahead-min-length="2" autocomplete="off"/>
+			</div>
+		</section>
+	</form>
+</div>
+<div class="modal-footer">
+	<button class="btn btn-primary" ng-click="editMatchVm.save()">Save</button>
+	<button class="btn btn-warning" ng-click="editMatchVm.cancel()">Cancel</button>
+</div> 

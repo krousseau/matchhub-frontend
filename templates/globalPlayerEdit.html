@@ -1,0 +1,58 @@
+<div class="modal-header">
+	<h3 class="modal-title">Edit Player</h3>
+</div>
+<div class="modal-body">
+	<form>
+		<div class="row">
+			<div class="col-xs-6">
+				<label for="input-email">Email</label>
+				<input type="email" class="form-control" id="input-email" ng-model="editPlayerVm.player.email" />
+			</div>
+			<div class="col-xs-6">
+				<label for="input-phone">Phone</label>
+				<input type="tel" class="form-control" id="input-phone" ng-model="editPlayerVm.player.phone" />
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-6">
+				<label class="" for="input-bday">Birthday</label>
+				<p class="input-group">
+					<input id="input-bday" type="text" class="form-control" datepicker-popup="yyyy-MM-dd" ng-model="editPlayerVm.player.birthday" is-open="editPlayerVm.datepickerState.isOpen" max-date="editPlayerVm.today" ng-required="true" close-text="Close" />
+					<span class="input-group-btn">
+						<button type="button" class="btn btn-default" ng-click="editPlayerVm.open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+					</span>
+				</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<label for="input-street1">Street 1</label>
+				<input type="text" class="form-control" id="input-street1" ng-model="editPlayerVm.player.street1" />
+			</div>
+	    </div>
+		<div class="row">
+			<div class="col-xs-12">
+				<label for="input-street2">Street 2</label>
+				<input type="text" class="form-control" id="input-street2" ng-model="editPlayerVm.player.street2" />
+			</div>
+	    </div>
+		<div class="row">
+			<div class="col-xs-5">
+		        <label for="input-city">City</label>
+		        <input type="text" class="form-control" placeholder="City" ng-model="editPlayerVm.player.city" />
+		    </div>
+		    <div class="col-xs-4">
+		        <label for="input-state">State</label>
+		        <mh-statepicker ng-model="editPlayerVm.player.state" />
+		    </div>
+		    <div class="col-xs-3">
+		        <label for="input-zip">Zip Code</label>
+		        <input type="text" class="form-control" id="input-zip" pattern="\d*" ng-model="editPlayerVm.player.zipcode"  />
+		    </div>
+	    </div>
+	</form>
+</div>
+<div class="modal-footer">
+	<button class="btn btn-primary" ng-click="editPlayerVm.save()">Save</button>
+	<button class="btn btn-warning" ng-click="editPlayerVm.cancel()">Cancel</button>
+</div> 
